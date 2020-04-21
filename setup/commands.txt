@@ -1,8 +1,30 @@
+sudo raspi-config
+
+sudo apt-get update
+sudo apt-get upgrade
+
+sudo nano /etc/hostname
+sudo nano /etc/motd
+
+sudo reboot
+
+sudo apt-get install git
+sudo apt-get install php7.3-cli
+
 curl https://get.pimoroni.com/blinkt | bash
-apt-get install php7.3-cli
+
+cd /home/pi
+git clone https://github.com/cloudmaniacs/corona-meter.git
+
+cd corona-meter
+
+php corona.php
+
+nano corona.php
+
 
 crontab -e
 
 crontab:
-*/5 * * * * php /home/pi/corona.php
-@reboot sleep 10 && php /home/pi/corona.php
+*/5 * * * * php /home/pi/corona-meter/corona.php
+@reboot sleep 10 && php /home/pi/corona-meter/corona.php
